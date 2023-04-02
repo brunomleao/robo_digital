@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4kcqrgkdrff5"]
+
+[ext_resource type="Script" path="res://Node2D.gd" id="1_o0agb"]
+[ext_resource type="Texture2D" uid="uid://dyixy5gqa0au6" path="res://809_1_H.png" id="2_8alr7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_65vuv"]
+size = Vector2(127, 125)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_o0agb")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(572, 319)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+scale = Vector2(0.206667, 0.196667)
+texture = ExtResource("2_8alr7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_65vuv")
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_http_request_request_completed"]
